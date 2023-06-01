@@ -22,6 +22,12 @@ class Core
       $this->currentController = ucwords($url[0]);
       // Unset 0 Index
       unset($url[0]);
+    } else {
+      // Handle the case when the controller file doesn't exist or URL is empty
+      // You can set a default controller or display an error message
+      // Example:
+      // $this->currentController = 'DefaultController';
+      // echo "404 Not Found";
     }
 
     // Require the controller
@@ -54,8 +60,6 @@ class Core
       $url = filter_var($url, FILTER_SANITIZE_URL);
       $url = explode('/', $url);
       return $url;
-    } else {
-      return [];
     }
   }
 }
